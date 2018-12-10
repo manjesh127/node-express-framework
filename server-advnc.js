@@ -49,6 +49,12 @@ app.get('/about', (req, res) => {
     });
 });
 
+app.get('/project',(req,res)=>{
+    res.render('project.hbs',{          //add new feture and deploying it on server
+      pageTitle:'project page',  
+    })
+})
+
 
 
 app.get('/bad', (req, res) => {
