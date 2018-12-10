@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;         //use port for heroku fix and assign in bottom
+
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials')         //use to inject inside view partials  
@@ -16,9 +18,9 @@ app.use((req, res, next) => {                               //2nd this is middle
     next();                                               //if empty then only load browser but not open
 });
 
-app.use((req, res, next) => {
-    res.render('maintainance.hbs');
-});
+// app.use((req, res, next) => {
+//     res.render('maintainance.hbs');                      //comment middle ware because it block the code
+// });
 
 // app.use(express.static(__dirname + '/public'));          //no working because maintainance page load at top print the page
 
@@ -55,6 +57,6 @@ app.get('/bad', (req, res) => {
     });
 });
 
-app.listen(3001, () => {
-    console.log('server is up on port 3001');
+app.listen(port, () => {
+    console.log(`surver is up on port ${port}`);
 });
