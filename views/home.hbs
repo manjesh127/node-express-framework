@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Some website</title>
+</head>
+<body>
+    {{!-- <h1>{{pageTitle}} </h1> --}}
+    {{> header}}                       {{!this is partial to header file}}
+   
+    {{!-- <p>{{welcomeMessage}}</p> --}}
+     {{screamIt welcomeMessage}}              {{!more variable aslo define in this 2 variable define}}
+
+    {{!-- <footer>
+       <p>Copyright {{currentYear}}</p>
+    </footer> --}}
+    {{> footer}}
+</body>
+</html> 
