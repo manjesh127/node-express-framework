@@ -2,33 +2,33 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
-const port = process.env.PORT || 3000;         //use port for heroku fix and assign in bottom
+const port = process.env.PORT || 3000;         
 
 var app = express();
 
-hbs.registerPartials(__dirname + '/views/partials')         //use to inject inside view partials  
+hbs.registerPartials(__dirname + '/views/partials')         
 app.set('view engine', 'hbs');
-app.use(express.static(__dirname + '/public'));           //this is use middle ware k jgah
+app.use(express.static(__dirname + '/public'));           
 
-app.use((req, res, next) => {                               //2nd this is middle warre example
+app.use((req, res, next) => {                               
     var now = new Date().toString();
-    var log = `${now}: ${req.method} ${req.url}`;          //this variable is pass in console and data also will print 
+    var log = `${now}: ${req.method} ${req.url}`;         
     console.log(log);
     fs.appendFile('server.log', log + '\n');
-    next();                                               //if empty then only load browser but not open
+    next();                                               
 });
 
 // app.use((req, res, next) => {
-//     res.render('maintainance.hbs');                      //comment middle ware because it block the code
+//     res.render('maintainance.hbs');                      
 // });
 
-// app.use(express.static(__dirname + '/public'));          //no working because maintainance page load at top print the page
+// app.use(express.static(__dirname + '/public'));         
 
-hbs.registerHelper('getCurrentYear', () => {           //the helper is used in return copyright fullyear and define getCurrentYear in footer
-    return new Date().getFullYear()                 //jo v return krayenge vo .getCurrentYear jha define h vha change hoga is date ki jagah sting return kraye to vo print hoga
+hbs.registerHelper('getCurrentYear', () => {         
+    return new Date().getFullYear()                
 });
 
-hbs.registerHelper('screamIt', (text) => {         //define screamit to home.hbs for uppercase
+hbs.registerHelper('screamIt', (text) => {         
     return text.toUpperCase();
 });
 
@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
     res.render('home.hbs', {
         pageTitle: 'home page',
         welcomeMessage: 'welcome to my website',
-        // currentYear: new Date().getFullYear()    //this is not a good method and this is write in register helper
+        // currentYear: new Date().getFullYear()    
     });
 });
 
@@ -50,7 +50,7 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/project',(req,res)=>{
-    res.render('project.hbs',{          //add new feture and deploying it on server
+    res.render('project.hbs',{          
       pageTitle:'project page',  
     })
 })
