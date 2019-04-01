@@ -3,13 +3,13 @@ const hbs = require('hbs');
 
 var app = express();
 
-app.set('view engine', 'hbs');                     //6 view engine install and require
-app.use(express.static(__dirname + '/public'));      //5 add html page via static no need to write all path
+app.set('view engine', 'hbs');                     
+app.use(express.static(__dirname + '/public'));      
 
 app.get('/', (req, res) => {
-    //  res.send('<h1>hello expres<h1>');     //1simple example 
+    //  res.send('<h1>hello expres<h1>');     
     // res.send({
-    //     name: 'manjesh',                       //2json data print 
+    //     name: 'manjesh',                     
     //     like: ['biking', 'travel']
     // });
     res.render('home.hbs',{
@@ -19,9 +19,9 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/about', (req, res) => {               //3 another get method  
+app.get('/about', (req, res) => {              
     // res.send('about page');
-    res.render('about.hbs', {                   //7 using hbs dynamic page and render it
+    res.render('about.hbs', {                   
         pageTitle: 'About page',
         currentYear: new Date().getFullYear()
     });
@@ -29,12 +29,12 @@ app.get('/about', (req, res) => {               //3 another get method
 
 
 // /bad -send back json with errorMessage
-app.get('/bad', (req, res) => {                      //4 another json 
+app.get('/bad', (req, res) => {                      
     res.send({
         errorMessage: 'unable to handle request'
     });
 });
 
 app.listen(3000, () => {
-    console.log('server is up on port 3000');      //optional ony read me
+    console.log('server is up on port 3000');      
 });
